@@ -1,0 +1,70 @@
+
+    <div class="sidebar">
+      <div class="sidebar-wrapper">
+        <div class="logo">
+          <a target="_blank" rel="noopener noreferrer"
+             href="" class="simple-text logo-mini">
+            PI
+          </a>
+          <a target="_blank" rel="noopener noreferrer"
+             href="" class="simple-text logo-normal">
+            Product
+          </a>
+        </div>
+        <ul class="nav">
+          <li class="{% if 'index' in segment %} active {% endif %}">
+            <a href="/">
+              <i class="tim-icons icon-chart-pie-36"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li class="{% if 'page-' in segment %} active {% endif %}">
+            <a data-toggle="collapse" href="#pagesExamples">
+              <i class="tim-icons icon-image-02"></i>
+              <p>
+                Play Books
+                <b class="caret"></b>
+              </p>
+            </a>
+            <div class="collapse" id="pagesExamples">
+              <ul class="nav">
+                <li>
+                  <a href="projinfo">
+                    <span class="sidebar-mini-icon">P0</span>
+                    <span class="sidebar-normal"> EPIC Project Info </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="day0">
+                    <span class="sidebar-mini-icon">P1</span>
+                    <span class="sidebar-normal"> EPIC Playbook Day0 </span>
+                  </a>
+                </li> 
+                <li>
+                  <a href="/page-login.html">
+                    <span class="sidebar-mini-icon">L</span>
+                    <span class="sidebar-normal"> Login </span>
+                  </a>
+                </li>
+                
+                <li>
+                  <a href="/page-user.html">
+                    <span class="sidebar-mini-icon">UP</span>
+                    <span class="sidebar-normal"> User Profile </span>
+                  </a>
+                </li>
+                
+              </ul>
+            </div>
+          </li>
+          
+
+          <li>
+              <a href="{% url 'logout' %}" >
+                <i class="tim-icons icon-user-run"></i>
+                <p>Logout</p>
+              </a>
+            </li>          
+        </ul>
+      </div>
+    </div>

@@ -1,0 +1,56 @@
+{% extends "layouts/base.html" %}
+
+
+{% block content %}
+<div class="card">
+  <div class="card-body">
+    <form>
+      <p><strong>{{ data }}</strong></p>
+      <!-- <a href=projinfo <button type="submit" class="btn btn-info">Playbook Info</button></a> -->
+      <!-- <a href=day0 {{postdata}} <button type="submit" onclick = start(0) class="btn btn-success">Run Playbook</button> -->
+      </a>
+    </form>
+    <form>
+      <p><strong>{{ postdata }}</strong></p>
+      <!-- <a href=day0 <button type="submit" class="btn btn-success">Run Playbook</button> -->
+      </a>
+    </form>
+      <div class="progress-container progress-success">
+        <span class="progress-badge">Success</span>
+        <div class="progress" id="progressBar">
+          <span id="status"></span>
+          <h1 id="finalMessage"></h1>
+            <div class="progress-bar progress-bar-warning" value="0" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                <span class="progress-value">60%</span>
+            </div>
+        </div>
+    </div>
+    
+  </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script>
+
+function start(al) {
+  var bar = document.getElementById('progressBar');
+  var status = document.getElementById('status');
+  status.innerHTML = al + "%";
+  bar.value = al;
+  al++;
+  var sim = setTimeout("start(" + al + ")", 1);
+  if (al == 100) {
+    status.innerHTML = "100%";
+    bar.value = 100;
+    clearTimeout(sim);
+    var finalMessage = document.getElementById('finalMessage');
+    finalMessage.innerHTML = "Process is complete";
+  }
+}
+
+</script>
+
+{% endblock javascripts %}
