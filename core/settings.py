@@ -7,7 +7,8 @@ import os
 from decouple import config
 from unipath import Path
 import dj_database_url
-
+import pymysql
+pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).parent
@@ -72,23 +73,23 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'poc_django',
-#         'USER': 'root',
-#         'PASSWORD': '',
-#         'HOST': '127.0.0.1',
-#         'PORT': '',
-#     }
-#  }
-
 DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.sqlite3',
-       'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-   }
-}
+     'default': {
+         'ENGINE': 'django.db.backends.mysql',
+         'NAME': 'Django_Api',
+         'USER': 'root',
+         'PASSWORD': 'root@123',
+         'HOST': '127.0.0.1',
+         'PORT': '3306',
+     }
+  }
+
+#DATABASES = {
+#   'default': {
+#       'ENGINE': 'django.db.backends.sqlite3',
+#       'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#   }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
