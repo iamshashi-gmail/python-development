@@ -1,0 +1,117 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %} UI Buttons {% endblock title %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="card">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card-header">
+        <h1 style = "font-size: 30px;"class="text-styles">File Upload Section</h1>
+      </div>
+    </div>
+  </div>
+<div class="row">
+  <div class="col-md-12 mb-5" style="text-align:center;">
+    <h4 style="color: red"><blink>Please name .zip file to <strong>Customer_Name_Date.zip</strong> and make sure .zip file name length should be less then 25 characters.</blink></h4>
+  </div>
+
+</div>
+
+  <form  method="POST"  id="upload-form">
+    {% csrf_token %}
+    <div class="col-md-12 col-sm-12" style="text-align:center; margin-top: 5px;">
+      <h4 style = "font-size: 20px;" class="card-title">Upload zip of the backup.sql file</h4>
+      <!-- <div class="fileinput-new thumbnail">
+        <img src="{% static '/assets/img/alt_img.png' %}" width="30%" height="20%">
+      </div> -->
+
+      <!-- <div class="progress fileinput-exists" id="not-visivle">
+        <div class="progress-bar fileinput-exists" role="progressbar" style="width: 100%;" aria-valuenow="25"
+          aria-valuemin="0" aria-valuemax="100">100%</div>
+      </div> -->
+
+      <strong><label for="sql_file_alias">Provide Customer Name :</label></strong>
+      <input id="sql_file_alias" type="text" name="sql_file_alias" required placeholder="*"/>
+      <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+        <div style="font-size: 45px; padding: 20px" class="fileinput-preview fileinput-exists"></div>
+        <div class="file-upload" id= "file-upload-id">
+          <span class="btn-round btn-file btn-lg " style="background-color: #65d097;color:#ffff">
+            <span  class="fileinput-new">Select ZIP File</span>
+            <span class="fileinput-exists">Change File</span>
+            <input id="sql_file" type="file" name="sql_file"/>
+          </span>
+          <!-- <a href="#pablo" class="btn-round fileinput-exists btn-lg" data-dismiss="fileinput"style="background-color: #EF3340;color:#ffff;margin-left:10px" ><i
+              class="fa fa-times"></i> Remove File</a> -->
+          {% if not File_Name %}
+          <button class="btn-round fileinput-exists btn-lg" type="submit" rel="tooltip" style="background-color:  #65d097;margin-left:10px;color:#ffff"
+            data-original-title="Click here to upload your file" data-placement="bottom" id="img_id">Process
+            file</button>
+          {% else %}
+          {% endif %}
+          <br>
+        </div>
+        <h1 id="test_hello"></h1>
+      </div>
+     
+      {% if File_Name %}
+      <button class="btn btn-success btn-round fileinput-exists" id="sampleSubmit" type="button">Process Data</button>
+      {% else %}
+      {% endif %}
+    </div>
+  </form>
+  <div id="uploaded_files"></div>
+</div>
+  <div id = "process-file">
+
+  </div>
+
+</div>
+{% include 'includes/footer.html' %}
+</div>
+
+
+{% endblock content %}
+
+// // }
+// // },
+//           url: 'file_upload',
+//           type: 'POST',
+//           cache: false,
+//                            contentType: false,
+//                            processData: false,
+//           data: form_data,
+//           // data: {
+//           //   'file_name': file_name_value
+//           // },
+//           success: function (response) {
+//               // $('.error').remove();
+//               if(response.error){
+//                 alert("error");
+//                   // $.each(response.errors, function(name, error){
+//                   //     error = '<small class="text-muted error">' + error + '</small>'
+//                   //     $form.find('[name=' + name + ']').after(error);
+//                   // })
+//               }
+//               else{
+//                   alert("File processing...")
+//                  $("#process-file").html(response);
+//                   // openNav()
+//               }
+//           },
+//           error: function(err) {
+//     console.log("i am at error")
+//     alert(error)
+//           }
+//           // cache: false,
+//           // contentType: false,
+//           // processData: false
+//       });
+  });
+</script>
+
+{% endblock javascripts %}
